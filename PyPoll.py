@@ -64,20 +64,21 @@ with open (file_to_save,"w") as txt_file:
         candidate_results= (f"{candidate_name}: {vote_percentage:.1f}% ({vote:,})\n" )
         print(candidate_results)
         txt_file.write(candidate_results)
-        
+
         # Determine the winning vote count and candidate
         # 1. Determine if the votes are greater than the winning count
-    if (vote> winning_count) and (vote_percentage>winning_percentage):
+        if (vote> winning_count) and (vote_percentage>winning_percentage):
         # 2. if true set winning count = to vote and winning_ percentage = to vote percentage
-        winning_count = vote
-        winning_percentage = vote_percentage
+            winning_count = vote
+            winning_percentage = vote_percentage
         # 3. Set winning candidate = the candidiate name
-        winning_cadidate = candidate_name
-        winning_candidate_summary = (
-            f"------------------------------------------ \n"
-            f"Winner: {winning_cadidate}\n"
-            f"Winning Vote Count: {winning_count:,}\n"
-            f"Winning Percentage: {winning_percentage:.1f}%\n"
-            f"-------------------------------------------\n")
+            winning_cadidate = candidate_name
+            winning_candidate_summary = (
+                f"------------------------------------------ \n"
+                f"Winner: {winning_cadidate}\n"
+                f"Winning Vote Count: {winning_count:,}\n"
+                f"Winning Percentage: {winning_percentage:.1f}%\n"
+                f"-------------------------------------------\n")
     print(winning_candidate_summary)
-                    
+    txt_file.write(winning_candidate_summary)
+
