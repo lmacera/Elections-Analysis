@@ -4,10 +4,6 @@
 # 3. The percentage of votes each candidate won
 # 4. The total number of votes each candidate won
 # 5. The winner of the election based on populare vote
-import datetime
-now = datetime.datetime.now()
-import random
-print("The time right now is ", now)
 # Assign a variable for the file to load and the path
 file_to_load= "resources\election_results.csv"
 #impot the CSV file and OS modules
@@ -28,7 +24,6 @@ winning_count = 0
 winning_percentage = 0
 # Open the election results and read the file
 with open(file_to_load) as election_data:
-    # To Do: read and analyze the data here
     # Read the file object with the reader function.
     file_reader = csv.reader(election_data)
     # Print the hearder row
@@ -46,29 +41,43 @@ with open(file_to_load) as election_data:
         candidate_votes[candidate_name] = 0
 # Add vote to cadidate coumt
      candidate_votes[candidate_name]+= 1
-# Determine the percentage of votes for each cadidate by looping though the counts
-# 1. Iterate through the cadidate list
-    for candidate_name in candidate_votes:
-#retrieve vote couldnt of a cadidate
-        vote = candidate_votes[candidate_name]
-# calculate the percentage of votes
-        vote_percentage = float(vote)/float(total_votes)*100
-        print(f" {candidate_name}: { vote_percentage:.1f}% ({vote:,})\n")
-# Determine the winning vote count and candidate
-# Print winning candidate, vote count, and percentage
-# 1. Determine if the votes are greater than the winning count
-        if (vote> winning_count) and (vote_percentage>winning_percentage):
-# 2. if true set winning count = to vote and winning_ percentage = to vote percentage
-                winning_count = vote
-                winning_percentage = vote_percentage
-# 3. Set winning candidate = the candidiate name
-                winning_cadidate = candidate_name
-                winning_candidate_summary = (
-                    f"------------------------------------------ \n"
-                    f"Winner: {winning_cadidate}\n"
-                    f"Winning Vote Count: {winning_count:,}\n"
-                    f"Winning Percentage: {winning_percentage:.1f}%\n"
-                    F"-------------------------------------------\n")
-print(winning_candidate_summary)
-            
+# Save the results to our text file
+with open (file_to_save,"w") as txt_file:
+ # print the final vote count to the terinaml
+    election_results = (
+        f"\nElection Results\n"
+        f"--------------------------\n"
+        f"Total Votes: {total_votes:,} \n"
+        f"---------------------------\n")
+ # Save the final vote count to the text file
+    txt_file.write(election_results)
+    print(election_results, end="")
 
+    # Determine the percentage of votes for each cadidate by looping though the counts
+    # 1. Iterate through the cadidate list
+    for candidate_name in candidate_votes:
+        #retrieve vote couldnt of a cadidate
+        vote = candidate_votes[candidate_name]
+        # calculate the percentage of votes
+        vote_percentage = float(vote)/float(total_votes)*100
+        # Assign canidate results variable  to print each cadidat, their voter count, and percentage to terminal
+        candidate_results= (f"{candidate_name}: {vote_percentage:.1f}% ({vote:,})\n" )
+        print(candidate_results)
+        txt_file.write(candidate_results)
+        
+        # Determine the winning vote count and candidate
+        # 1. Determine if the votes are greater than the winning count
+    if (vote> winning_count) and (vote_percentage>winning_percentage):
+        # 2. if true set winning count = to vote and winning_ percentage = to vote percentage
+        winning_count = vote
+        winning_percentage = vote_percentage
+        # 3. Set winning candidate = the candidiate name
+        winning_cadidate = candidate_name
+        winning_candidate_summary = (
+            f"------------------------------------------ \n"
+            f"Winner: {winning_cadidate}\n"
+            f"Winning Vote Count: {winning_count:,}\n"
+            f"Winning Percentage: {winning_percentage:.1f}%\n"
+            f"-------------------------------------------\n")
+    print(winning_candidate_summary)
+                    
