@@ -30,11 +30,11 @@ Using VS Code and Python our team was able to analyze the election_results.csv t
 	- Denver county, receved 82.8% of the vote and had 306,055 votes
 - The candidates are:
  	 - Charles Casper Stockham
-  - Diana DeGette
+ 	 - Diana DeGette
  	 - Raymon Anthony Doane
 - The candidate results were:
   	- Charles Casper Stockham received 23.0% of the vote and had 85,213 votes.
- 	 - Diana DeGette received 73.8% of the vote and had 272,892 votes.
+ 	- Diana DeGette received 73.8% of the vote and had 272,892 votes.
   	- Raymon Anthony Doane received 3.1% of the vote and had 11,606 votes.
 - The winner of the election was:
 	- Diana DeGette, who received 73.8% of the vote and had 272,892 votes.
